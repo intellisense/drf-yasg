@@ -9,6 +9,7 @@ from rest_framework.filters import OrderingFilter
 from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.parsers import MultiPartParser
 from rest_framework.response import Response
+from rest_framework.exceptions import APIException
 
 from articles import serializers
 from articles.models import Article
@@ -145,3 +146,17 @@ class ArticleViewSet(viewsets.ModelViewSet):
     def destroy(self, request, *args, **kwargs):
         """destroy method docstring"""
         return super(ArticleViewSet, self).destroy(request, *args, **kwargs)
+
+    def get_serializer_class(self):
+        if self.request:
+            # My view set returns a dynamic serilaizer based on the field type in data
+            # which might raiser an APIException if field type was wrong
+            """
+            validator = serializers.MyValidator(data=self.request.data)
+            validator.is_valid(raise_exception=True)
+            return get_field_type_serializer_class(validator.data['field_type'])
+            """
+            # But for demonstration purpose I will simply raise an APIException here
+            raise APIException('Stop')
+
+        return super(ArticleViewSet, self).get_serializer_class()
