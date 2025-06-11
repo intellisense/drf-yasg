@@ -6,3 +6,4 @@ readme_renderer>=17.2
 
 Django>=2.0,<2.1
 djangorestframework_camel_case>=0.2.0
+requests>=2.32.4 # not directly required, pinned by Snyk to avoid a vulnerability
