@@ -9,3 +9,4 @@ uritemplate>=3.0.0
 
 djangorestframework>=3.7.7
 Django>=1.11.7
+urllib3>=2.5.0 # not directly required, pinned by Snyk to avoid a vulnerability
