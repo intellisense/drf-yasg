@@ -1,3 +1,4 @@
 # requirements for the validation feature
 flex>=6.11.1
 swagger-spec-validator>=2.1.0
+urllib3>=2.6.3 # not directly required, pinned by Snyk to avoid a vulnerability
